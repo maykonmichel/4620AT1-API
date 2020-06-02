@@ -1,1 +1,1 @@
-export default (_, { name }) => `Hello ${name || 'World'}`;
+export default (_, {name}) => `Hello ${name || 'World'}`;
