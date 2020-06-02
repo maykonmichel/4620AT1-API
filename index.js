@@ -10,5 +10,8 @@ new GraphQLServer({
   resolvers,
   context: () => ({db}),
 })
-  .start(() => console.log('Server is running on localhost:4000')) // eslint-disable-line no-console
+  .start(
+    {port: process.env.PORT || 4000},
+    ({port}) => console.log(`Server is running on localhost:${port}`), // eslint-disable-line no-console
+  )
   .then();
