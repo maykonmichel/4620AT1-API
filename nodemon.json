@@ -3,7 +3,7 @@
   "ignore": [".git", "node_modules/**/node_modules"],
   "verbose": true,
   "execMap": {
-    "js": "babel-node"
+    "js": "babel-node -r dotenv/config"
   },
   "env": {
     "NODE_ENV": "development"
