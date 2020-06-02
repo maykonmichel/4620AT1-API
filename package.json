@@ -5,5 +5,14 @@
   "repository": "https://github.com/maykonmichel/4620AT1-API",
   "author": "maykonmichel <maykonmichelpalma@gmail.com>",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@babel/node": "^7.10.1",
+    "@babel/preset-env": "^7.10.2"
+  }
 }
