@@ -1,0 +1,9 @@
+{
+  "name": "video-store",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "https://github.com/maykonmichel/4620AT1-API",
+  "author": "maykonmichel <maykonmichelpalma@gmail.com>",
+  "license": "MIT",
+  "private": false
+}
