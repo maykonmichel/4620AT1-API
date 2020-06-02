@@ -2,6 +2,15 @@ schema {
   query: Query
 }
 
+type Movie {
+  id: ID
+  name: String
+  genre: String
+  rating: Int
+  price: Float
+  available: Boolean
+}
+
 type Query {
   hello(name: String): String!
 }
