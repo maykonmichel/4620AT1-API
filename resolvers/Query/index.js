@@ -1,5 +1,5 @@
-import hello from './hello';
+import movies from './movies';
 
 export default {
-  hello,
+  movies,
 };
