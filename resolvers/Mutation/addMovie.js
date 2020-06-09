@@ -10,7 +10,6 @@ export default async (parent, {input}, {db}) => {
     props(['name', 'genre', 'rating', 'price'], input),
   );
   return {
-    __typename: 'Movie',
     id,
     ...input,
     available: true,
