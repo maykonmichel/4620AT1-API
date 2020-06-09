@@ -13,7 +13,8 @@ type Movie {
 }
 
 type Mutation {
-  addMovie(input: MovieInput): Movie
+  addMovie(input: AddMovieInput): Movie
+  updateMovie(input: UpdateMovieInput): Movie
 }
 
 type Query {
@@ -21,9 +22,18 @@ type Query {
   movie(id: ID!): Movie
 }
 
-input MovieInput {
+input AddMovieInput {
   name: String!
   genre: String!
   rating: Int!
   price: Float!
+}
+
+input UpdateMovieInput {
+  id: ID!
+  name: String
+  genre: String
+  rating: Int
+  price: Float
+  available: Boolean
 }
