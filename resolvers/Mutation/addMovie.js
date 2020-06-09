@@ -13,5 +13,6 @@ export default async (parent, {input}, {db}) => {
     __typename: 'Movie',
     id,
     ...input,
+    available: true,
   };
 };
