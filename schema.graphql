@@ -1,5 +1,6 @@
 schema {
   query: Query
+  mutation: Mutation
 }
 
 type Movie {
@@ -11,6 +12,17 @@ type Movie {
   available: Boolean
 }
 
+type Mutation {
+  addMovie(input: MovieInput): Movie
+}
+
 type Query {
   movies: [Movie]!
+}
+
+input MovieInput {
+  name: String!
+  genre: String!
+  rating: Int!
+  price: Float!
 }
