@@ -1,7 +1,9 @@
 export default {
   select: `
       SELECT *
-      FROM movies;
+      FROM movies
+      WHERE available = true
+      ORDER BY id;
   `,
   selectById: `
       SELECT *
@@ -21,5 +23,11 @@ export default {
           price     = $5,
           available = $6
       WHERE id = $1;
+  `,
+  remove: `
+      UPDATE movies
+      SET available = false
+      WHERE id = $1
+      RETURNING *;
   `,
 };
