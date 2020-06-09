@@ -18,6 +18,7 @@ type Mutation {
 
 type Query {
   movies: [Movie]!
+  movie(id: ID!): Movie
 }
 
 input MovieInput {
