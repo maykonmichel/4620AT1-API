@@ -1,7 +1,9 @@
 export default {
   select: `
       SELECT *
-      FROM movies;
+      FROM movies
+      WHERE available = true
+      ORDER BY id;
   `,
   selectById: `
       SELECT *
