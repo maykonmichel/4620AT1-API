@@ -22,4 +22,10 @@ export default {
           available = $6
       WHERE id = $1;
   `,
+  remove: `
+      UPDATE movies
+      SET available = false
+      WHERE id = $1
+      RETURNING *;
+  `,
 };
