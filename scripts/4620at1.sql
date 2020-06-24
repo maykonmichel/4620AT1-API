@@ -47,7 +47,6 @@ CREATE TABLE movies
     available BOOLEAN DEFAULT TRUE
 );
 
-<<<<<<< HEAD
 CREATE TABLE medias
 (
     id        SERIAL
