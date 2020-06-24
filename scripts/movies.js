@@ -2,7 +2,6 @@ export default {
   select: `
       SELECT *
       FROM movies
-      WHERE available = true
       ORDER BY id;
   `,
   selectById: `
@@ -25,8 +24,8 @@ export default {
       WHERE id = $1;
   `,
   remove: `
-      UPDATE movies
-      SET available = false
+      DELETE
+      FROM movies
       WHERE id = $1
       RETURNING *;
   `,
