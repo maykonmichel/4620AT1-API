@@ -3,6 +3,13 @@ schema {
   mutation: Mutation
 }
 
+type Customer {
+  id: ID
+  rg: String
+  name: String
+  cpf: String
+}
+
 type Movie {
   id: ID
   name: String
@@ -13,14 +20,25 @@ type Movie {
 }
 
 type Mutation {
+  addCustomer(input: AddCustomerInput): Customer
   addMovie(input: AddMovieInput): Movie
+  updateCustomer(input: UpdateCustomerInput): Customer
   updateMovie(input: UpdateMovieInput): Movie
+  removeCustomer(id: ID!): Customer
   removeMovie(id: ID!): Movie
 }
 
 type Query {
-  movies: [Movie]!
+  customer(id: ID!): Customer
+  customers: [Customer]!
   movie(id: ID!): Movie
+  movies: [Movie]!
+}
+
+input AddCustomerInput {
+  name: String!
+  rg: String!
+  cpf: String!
 }
 
 input AddMovieInput {
@@ -28,6 +46,13 @@ input AddMovieInput {
   genre: String!
   rating: Int!
   price: Float!
+}
+
+input UpdateCustomerInput {
+  id: ID!
+  name: String
+  rg: String
+  cpf: String
 }
 
 input UpdateMovieInput {
