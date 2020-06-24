@@ -10,3 +10,14 @@ CREATE TABLE movies
     price     FLOAT,
     available BOOLEAN DEFAULT TRUE
 );
+
+DROP TABLE IF EXISTS people;
+CREATE TABLE people
+(
+    id   SERIAL
+        CONSTRAINT people_pk
+            PRIMARY KEY,
+    name CHARACTER VARYING,
+    rg   CHARACTER VARYING
+);
+
