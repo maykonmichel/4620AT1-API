@@ -21,3 +21,14 @@ CREATE TABLE people
     rg   CHARACTER VARYING
 );
 
+DROP TABLE IF EXISTS customer;
+CREATE TABLE customer
+(
+    id  SERIAL
+        CONSTRAINT customer_pk
+            PRIMARY KEY
+        CONSTRAINT customer_people_id_fk
+            REFERENCES people ON DELETE CASCADE,
+    cpf CHARACTER VARYING
+);
+
