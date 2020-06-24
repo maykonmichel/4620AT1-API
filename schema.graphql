@@ -10,6 +10,12 @@ type Customer {
   cpf: String
 }
 
+type Media {
+  id: ID
+  location: String
+  available: Boolean
+}
+
 type Movie {
   id: ID
   name: String
@@ -17,14 +23,18 @@ type Movie {
   rating: Int
   price: Float
   available: Boolean
+  medias: [Media]
 }
 
 type Mutation {
   addCustomer(input: AddCustomerInput): Customer
+  addMedia(input: AddMediaInput): Media
   addMovie(input: AddMovieInput): Movie
   updateCustomer(input: UpdateCustomerInput): Customer
+  updateMedia(input: UpdateMediaInput): Media
   updateMovie(input: UpdateMovieInput): Movie
   removeCustomer(id: ID!): Customer
+  removeMedia(id: ID!): Media
   removeMovie(id: ID!): Movie
 }
 
@@ -41,6 +51,11 @@ input AddCustomerInput {
   cpf: String!
 }
 
+input AddMediaInput {
+  movie: ID!
+  location: String!
+}
+
 input AddMovieInput {
   name: String!
   genre: String!
@@ -53,6 +68,11 @@ input UpdateCustomerInput {
   name: String
   rg: String
   cpf: String
+}
+
+input UpdateMediaInput {
+  id: ID!
+  location: String
 }
 
 input UpdateMovieInput {

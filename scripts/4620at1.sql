@@ -1,4 +1,8 @@
+DROP TABLE IF EXISTS medias;
 DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS customer;
+DROP TABLE IF EXISTS people;
+
 CREATE TABLE movies
 (
     id        SERIAL
@@ -11,7 +15,17 @@ CREATE TABLE movies
     available BOOLEAN DEFAULT TRUE
 );
 
-DROP TABLE IF EXISTS people;
+CREATE TABLE medias
+(
+    id        SERIAL
+        CONSTRAINT medias_pk
+            PRIMARY KEY,
+    movie      INTEGER
+        REFERENCES movies ON DELETE CASCADE,
+    location CHARACTER VARYING,
+    available BOOLEAN DEFAULT TRUE
+);
+
 CREATE TABLE people
 (
     id   SERIAL
@@ -21,7 +35,6 @@ CREATE TABLE people
     rg   CHARACTER VARYING
 );
 
-DROP TABLE IF EXISTS customer;
 CREATE TABLE customer
 (
     id  SERIAL
