@@ -1,21 +1,17 @@
 DROP TABLE IF EXISTS people;
-DROP TABLE IF EXISTS movies;
 
 CREATE TABLE people
 (
-    number INT
-        CONSTRAINT people_pk
-            PRIMARY KEY,
+    number INT CONSTRAINT people_pk PRIMARY KEY,
     name   CHARACTER VARYING,
     rg     CHARACTER VARYING
 );
 
 DROP TABLE IF EXISTS employee;
-
 CREATE TABLE employee
 (
-    number INT
-        CONSTRAINT employee_people_fk references people (number),
+    number INT CONSTRAINT employee_pk PRIMARY KEY,
+    FOREIGN KEY (number) references people (number),
     pis    INT,
     active BOOLEAN DEFAULT TRUE,
     admission date,
@@ -23,11 +19,12 @@ CREATE TABLE employee
     password    CHARACTER VARYING
 );
 
+
 DROP TABLE IF EXISTS custumer;
 CREATE TABLE custumer
 (
-    number INT
-        CONSTRAINT custumer_people_fk references people (number),
+    number INT CONSTRAINT custumer_pk PRIMARY KEY,
+    FOREIGN KEY (number) references people (number),
     cpf    INT
 );
 
@@ -36,8 +33,7 @@ DROP TABLE IF EXISTS movies;
 CREATE TABLE movies
 (
  id        SERIAL
- CONSTRAINT movies_pk
-           PRIMARY KEY,
+ CONSTRAINT movies_pk PRIMARY KEY,
     name      CHARACTER VARYING,
     genre     CHARACTER VARYING,
     rating    INT,
@@ -46,32 +42,26 @@ CREATE TABLE movies
 );
 
 DROP TABLE IF EXISTS media;
-
 CREATE TABLE media
 (
-    id     SERIAL
-        CONSTRAINT media_pk
-            PRIMARY KEY,
-    quantity INT
+    id  SERIAL  CONSTRAINT media_pk PRIMARY KEY,
+    movie_id SERIAL,
+    FOREIGN KEY (movie_id) references movies (id),
+    location date
 )
 
 DROP TABLE IF EXISTS rent;
 
 CREATE TABLE rent
 (
-    id     SERIAL
-        CONSTRAINT rent_pk
-            PRIMARY KEY,
+    id  SERIAL CONSTRAINT rent_pk PRIMARY KEY,
     data_aluguel  DATE,
     data_devolucao DATE,
-    number INT
-    CONSTRAINT employee_people_fk references employee (number),
-    number INT
-    CONSTRAINT custumer_people_fk references custumer (number),
-    number INT
-    CONSTRAINT _people_fk references people (number),
-
+    FOREIGN KEY (id) REFERENCES employee (number),
+    FOREIGN KEY (id) REFERENCES custumer (number),
+    FOREIGN KEY (id) REFERENCES people (number)
 )
+
 
 
 
