@@ -10,6 +10,11 @@ type Customer {
   cpf: String
 }
 
+type Employee {
+  id:ID
+  pis: string
+}
+
 type Media {
   id: ID
   location: String
@@ -28,12 +33,15 @@ type Movie {
 
 type Mutation {
   addCustomer(input: AddCustomerInput): Customer
+  addEmployee(input: AddEmployeeInput): Employee
   addMedia(input: AddMediaInput): Media
   addMovie(input: AddMovieInput): Movie
   updateCustomer(input: UpdateCustomerInput): Customer
+  updateEmployee(input: UpdateEmployeeInput): Employee
   updateMedia(input: UpdateMediaInput): Media
   updateMovie(input: UpdateMovieInput): Movie
   removeCustomer(id: ID!): Customer
+  removeEmployee(id: ID!): Employee
   removeMedia(id: ID!): Media
   removeMovie(id: ID!): Movie
 }
@@ -41,8 +49,15 @@ type Mutation {
 type Query {
   customer(id: ID!): Customer
   customers: [Customer]!
+  employee(id: ID!): Employee
+  Employee: [Employee]!
   movie(id: ID!): Movie
   movies: [Movie]!
+}
+
+input AddEmployeeInput {
+  name: String!
+  pis: String!
 }
 
 input AddCustomerInput {
@@ -68,6 +83,12 @@ input UpdateCustomerInput {
   name: String
   rg: String
   cpf: String
+}
+
+input UpdateCustomerInput {
+  id: ID!
+  name: String
+  pis: String
 }
 
 input UpdateMediaInput {

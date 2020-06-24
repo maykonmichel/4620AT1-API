@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS people;
 
 CREATE TABLE people
 (
-    number INT CONSTRAINT people_pk PRIMARY KEY,
+    id SERIAL CONSTRAINT people_pk PRIMARY KEY,
     name   CHARACTER VARYING,
     rg     CHARACTER VARYING
 );
@@ -14,13 +14,10 @@ CREATE TABLE people
 DROP TABLE IF EXISTS employee;
 CREATE TABLE employee
 (
-    number INT CONSTRAINT employee_pk PRIMARY KEY,
-    FOREIGN KEY (number) references people (number),
-    pis    INT,
-    active BOOLEAN DEFAULT TRUE,
-    admission date,
-    user_access CHARACTER VARYING,
-    password    CHARACTER VARYING
+    id SERIAL CONSTRAINT employee_pk PRIMARY KEY
+            CONSTRAINT employee_people_number_fk
+                    REFERENCES people ON DELETE CASCADE,
+    pis    INT
 );
 
 
