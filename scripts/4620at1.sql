@@ -1,6 +1,8 @@
+DROP TABLE IF EXISTS rent;
 DROP TABLE IF EXISTS medias;
 DROP TABLE IF EXISTS movies;
 DROP TABLE IF EXISTS customer;
+DROP TABLE IF EXISTS employee;
 DROP TABLE IF EXISTS people;
 
 
@@ -11,7 +13,6 @@ CREATE TABLE people
     rg     CHARACTER VARYING
 );
 
-DROP TABLE IF EXISTS employee;
 CREATE TABLE employee
 (
     id SERIAL CONSTRAINT employee_pk PRIMARY KEY
@@ -32,7 +33,6 @@ CREATE TABLE customer
 );
 
 
-DROP TABLE IF EXISTS movies;
 CREATE TABLE movies
 (
  id        SERIAL
@@ -56,7 +56,6 @@ CREATE TABLE medias
 );
 
 
-DROP TABLE IF EXISTS rent;
 
 CREATE TABLE rent
 (
