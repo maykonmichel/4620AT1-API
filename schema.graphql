@@ -13,6 +13,8 @@ type Customer {
 type Employee {
   id: ID
   pis: String
+  name: String
+  rg: String
 }
 
 type Media {
