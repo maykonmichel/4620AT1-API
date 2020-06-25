@@ -62,9 +62,9 @@ CREATE TABLE rent
     id  SERIAL CONSTRAINT rent_pk PRIMARY KEY,
     data_aluguel  DATE,
     data_devolucao DATE,
-    FOREIGN KEY (id) REFERENCES employee (number),
-    FOREIGN KEY (id) REFERENCES custumer (number),
-    FOREIGN KEY (id) REFERENCES people (number)
+    FOREIGN KEY (id) REFERENCES employee (id),
+    FOREIGN KEY (id) REFERENCES custumer (id),
+    FOREIGN KEY (id) REFERENCES people (id)
 )
 
 

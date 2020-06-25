@@ -1,4 +1,4 @@
-import customers from '../../scripts/employees';
+import employess from '../../scripts/employees';
 
 export default async (parent, {id}, {db}) => {
   const {

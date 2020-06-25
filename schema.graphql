@@ -11,8 +11,8 @@ type Customer {
 }
 
 type Employee {
-  id:ID
-  pis: string
+  id: ID
+  pis: String
 }
 
 type Media {
@@ -50,7 +50,7 @@ type Query {
   customer(id: ID!): Customer
   customers: [Customer]!
   employee(id: ID!): Employee
-  Employee: [Employee]!
+  employees: [Employee]!
   movie(id: ID!): Movie
   movies: [Movie]!
 }
@@ -85,7 +85,7 @@ input UpdateCustomerInput {
   cpf: String
 }
 
-input UpdateCustomerInput {
+input UpdateEmployeeInput {
   id: ID!
   name: String
   pis: String
