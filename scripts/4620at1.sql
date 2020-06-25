@@ -1,13 +1,42 @@
+DROP TABLE IF EXISTS rent;
 DROP TABLE IF EXISTS medias;
 DROP TABLE IF EXISTS movies;
 DROP TABLE IF EXISTS customer;
+DROP TABLE IF EXISTS employee;
 DROP TABLE IF EXISTS people;
+
+
+CREATE TABLE people
+(
+    id SERIAL CONSTRAINT people_pk PRIMARY KEY,
+    name   CHARACTER VARYING,
+    rg     CHARACTER VARYING
+);
+
+CREATE TABLE employee
+(
+    id SERIAL CONSTRAINT employee_pk PRIMARY KEY
+            CONSTRAINT employee_people_number_fk
+                    REFERENCES people ON DELETE CASCADE,
+    pis    INT
+);
+
+
+CREATE TABLE customer
+(
+    id  SERIAL
+        CONSTRAINT customer_pk
+            PRIMARY KEY
+        CONSTRAINT customer_people_id_fk
+            REFERENCES people ON DELETE CASCADE,
+    cpf CHARACTER VARYING
+);
+
 
 CREATE TABLE movies
 (
-    id        SERIAL
-        CONSTRAINT movies_pk
-            PRIMARY KEY,
+ id        SERIAL
+ CONSTRAINT movies_pk PRIMARY KEY,
     name      CHARACTER VARYING,
     genre     CHARACTER VARYING,
     rating    INT,
@@ -26,22 +55,18 @@ CREATE TABLE medias
     available BOOLEAN DEFAULT TRUE
 );
 
-CREATE TABLE people
-(
-    id   SERIAL
-        CONSTRAINT people_pk
-            PRIMARY KEY,
-    name CHARACTER VARYING,
-    rg   CHARACTER VARYING
-);
 
-CREATE TABLE customer
+
+CREATE TABLE rent
 (
-    id  SERIAL
-        CONSTRAINT customer_pk
-            PRIMARY KEY
-        CONSTRAINT customer_people_id_fk
-            REFERENCES people ON DELETE CASCADE,
-    cpf CHARACTER VARYING
-);
+    id  SERIAL CONSTRAINT rent_pk PRIMARY KEY,
+    data_aluguel  DATE,
+    data_devolucao DATE,
+    FOREIGN KEY (id) REFERENCES employee (id),
+    FOREIGN KEY (id) REFERENCES custumer (id),
+    FOREIGN KEY (id) REFERENCES people (id)
+)
+
+
+
 
