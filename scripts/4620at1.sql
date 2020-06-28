@@ -40,8 +40,7 @@ CREATE TABLE movies
     name      CHARACTER VARYING,
     genre     CHARACTER VARYING,
     rating    INT,
-    price     FLOAT,
-    available BOOLEAN DEFAULT TRUE
+    price     FLOAT
 );
 
 CREATE TABLE medias
@@ -55,17 +54,34 @@ CREATE TABLE medias
     available BOOLEAN DEFAULT TRUE
 );
 
-
-
 CREATE TABLE rent
 (
-    id  SERIAL CONSTRAINT rent_pk PRIMARY KEY,
+    id  SERIAL PRIMARY KEY,
+    id_empregado SERIAL REFERENCES employee,
+    id_cliente SERIAL REFERENCES customer,
+    id_media SERIAl REFERENCES medias,
     data_aluguel  DATE,
     data_devolucao DATE,
-    FOREIGN KEY (id) REFERENCES employee (id),
-    FOREIGN KEY (id) REFERENCES custumer (id),
-    FOREIGN KEY (id) REFERENCES people (id)
-)
+    sucesso_no_aluguel BOOLEAN DEFAULT FALSE
+);
+
+CREATE or replace FUNCTION aluguel()
+RETURNS trigger AS $$
+BEGIN
+    IF (TG_OP = 'INSERT') THEN
+    UPDATE medias set available = false WHERE id  = NEW.id_media;
+    UPDATE rent set sucesso_no_aluguel = true WHERE id = NEW.id;
+    END IF;
+    RETURN NEW;
+END;
+$$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER aluguel_trigger
+AFTER INSERT ON rent
+FOR EACH ROW
+EXECUTE PROCEDURE aluguel();
+
 
 
 
