@@ -60,9 +60,8 @@ CREATE TABLE rent
     id_empregado SERIAL REFERENCES employee,
     id_cliente SERIAL REFERENCES customer,
     id_media SERIAl REFERENCES medias,
-    data_aluguel  DATE,
-    data_devolucao DATE,
-    sucesso_no_aluguel BOOLEAN DEFAULT FALSE
+    data_aluguel  timestamp,
+    data_devolucao timestamp
 );
 
 CREATE or replace FUNCTION aluguel()
@@ -70,7 +69,6 @@ RETURNS trigger AS $$
 BEGIN
     IF (TG_OP = 'INSERT') THEN
     UPDATE medias set available = false WHERE id  = NEW.id_media;
-    UPDATE rent set sucesso_no_aluguel = true WHERE id = NEW.id;
     END IF;
     RETURN NEW;
 END;
@@ -81,6 +79,10 @@ CREATE TRIGGER aluguel_trigger
 AFTER INSERT ON rent
 FOR EACH ROW
 EXECUTE PROCEDURE aluguel();
+
+
+
+
 
 
 
