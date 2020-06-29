@@ -60,8 +60,8 @@ CREATE TABLE rent
     id_empregado SERIAL REFERENCES employee,
     id_cliente SERIAL REFERENCES customer,
     id_media SERIAl REFERENCES medias,
-    data_aluguel  timestamp,
-    data_devolucao timestamp
+    data_aluguel  timestamp DEFAULT now(),
+    data_devolucao timestamp DEFAULT null
 );
 
 CREATE or replace FUNCTION aluguel()
