@@ -12,9 +12,9 @@ type Customer {
 
 type Employee {
   id: ID
-  pis: String
-  name: String
   rg: String
+  name: String
+  pis: String
 }
 
 type Media {
@@ -59,6 +59,7 @@ type Query {
 
 input AddEmployeeInput {
   name: String!
+  rg: String!
   pis: String!
 }
 
@@ -90,6 +91,7 @@ input UpdateCustomerInput {
 input UpdateEmployeeInput {
   id: ID!
   name: String
+  rg: String
   pis: String
 }
 
