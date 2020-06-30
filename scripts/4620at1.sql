@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS rent;
+DROP TABLE IF EXISTS rents;
 DROP TABLE IF EXISTS medias;
 DROP TABLE IF EXISTS movies;
 DROP TABLE IF EXISTS customer;
@@ -54,7 +54,7 @@ CREATE TABLE medias
     available BOOLEAN DEFAULT TRUE
 );
 
-CREATE TABLE rent
+CREATE TABLE rents
 (
     id  SERIAL PRIMARY KEY,
     id_empregado SERIAL REFERENCES employees,
@@ -76,7 +76,7 @@ $$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER aluguel_trigger
-AFTER INSERT ON rent
+AFTER INSERT ON rents
 FOR EACH ROW
 EXECUTE PROCEDURE aluguel();
 
@@ -93,7 +93,7 @@ $update$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER devolucao_trigger
-AFTER UPDATE ON rent
+AFTER UPDATE ON rents
 FOR EACH ROW
 EXECUTE PROCEDURE refundaluguel();
 
