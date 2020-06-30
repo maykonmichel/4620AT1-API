@@ -34,12 +34,10 @@ type Movie {
 }
 
 type Rent {
-
   id: ID
   id_empregado: ID
-  id_cliente : ID
+  id_cliente: ID
   id_media: ID
-
 }
 
 type Mutation {
@@ -130,7 +128,7 @@ input UpdateMovieInput {
 }
 
 input RefundRentInput {
-    id_empregado: ID!
-    id_cliente: ID!
-    id_media: ID!
+  id_empregado: ID!
+  id_cliente: ID!
+  id_media: ID!
 }

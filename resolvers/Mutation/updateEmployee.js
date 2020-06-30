@@ -1,13 +1,13 @@
 import {props} from 'ramda';
 
-import customers from '../../scripts/employees';
+import employees from '../../scripts/employees';
 
 export default async (parent, {input: {id, ...input}}, {db}) => {
   const {
     rows: [data],
   } = await db.query(employees.selectById, [id]);
 
-  const customer = {...data, ...input};
+  const employee = {...data, ...input};
 
   await Promise.all([
     db.query(employees.update[0], props(['id', 'name', 'rg'], employee)),

@@ -12,8 +12,7 @@ import updateCustomer from './updateCustomer';
 import updateEmployee from './updateEmployee';
 import updateMedia from './updateMedia';
 import updateMovie from './updateMovie';
-import refundRent from './refundMedia';
-
+import refundRent from './refundRent';
 
 export default {
   addCustomer,
