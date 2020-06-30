@@ -13,10 +13,10 @@ CREATE TABLE people
     rg     CHARACTER VARYING
 );
 
-CREATE TABLE employee
+CREATE TABLE employees
 (
-    id SERIAL CONSTRAINT employee_pk PRIMARY KEY
-            CONSTRAINT employee_people_number_fk
+    id SERIAL CONSTRAINT employees_pk PRIMARY KEY
+            CONSTRAINT employees_people_number_fk
                     REFERENCES people ON DELETE CASCADE,
     pis    INT
 );
@@ -57,7 +57,7 @@ CREATE TABLE medias
 CREATE TABLE rent
 (
     id  SERIAL PRIMARY KEY,
-    id_empregado SERIAL REFERENCES employee,
+    id_empregado SERIAL REFERENCES employees,
     id_cliente SERIAL REFERENCES customer,
     id_media SERIAl REFERENCES medias,
     data_aluguel  timestamp DEFAULT now(),
@@ -81,10 +81,21 @@ FOR EACH ROW
 EXECUTE PROCEDURE aluguel();
 
 
+CREATE or replace FUNCTION refundaluguel()
+RETURNS trigger AS $update$
+BEGIN
+    IF (TG_OP = 'UPDATE') THEN
+    UPDATE medias set available = true WHERE id  = NEW.id_media;
+    END IF;
+    RETURN NEW;
+END;
+$update$
+LANGUAGE plpgsql;
 
-
-
-
+CREATE TRIGGER devolucao_trigger
+AFTER UPDATE ON rent
+FOR EACH ROW
+EXECUTE PROCEDURE refundaluguel();
 
 
 

@@ -4,6 +4,9 @@ import employee from './employee';
 import employees from './employees';
 import movie from './movie';
 import movies from './movies';
+import rent from './rent';
+import rents from './rents';
+
 
 export default {
   customer,
@@ -12,4 +15,6 @@ export default {
   employees,
   movie,
   movies,
+  rent,
+  rents,
 };

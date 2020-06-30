@@ -33,19 +33,31 @@ type Movie {
   medias: [Media]
 }
 
+type Rent {
+
+  id: ID
+  id_empregado: ID
+  id_cliente : ID
+  id_media: ID
+
+}
+
 type Mutation {
   addCustomer(input: AddCustomerInput): Customer
   addEmployee(input: AddEmployeeInput): Employee
   addMedia(input: AddMediaInput): Media
   addMovie(input: AddMovieInput): Movie
+  addRent(input: AddRentInput): Rent
   updateCustomer(input: UpdateCustomerInput): Customer
   updateEmployee(input: UpdateEmployeeInput): Employee
   updateMedia(input: UpdateMediaInput): Media
   updateMovie(input: UpdateMovieInput): Movie
+  refundRent(input: RefundRentInput): Rent
   removeCustomer(id: ID!): Customer
   removeEmployee(id: ID!): Employee
   removeMedia(id: ID!): Media
   removeMovie(id: ID!): Movie
+  removeRent(id: ID!): Rent
 }
 
 type Query {
@@ -55,6 +67,8 @@ type Query {
   employees: [Employee]!
   movie(id: ID!): Movie
   movies: [Movie]!
+  rent(id: ID!): Rent
+  rents: [Rent]!
 }
 
 input AddEmployeeInput {
@@ -79,6 +93,12 @@ input AddMovieInput {
   genre: String!
   rating: Int!
   price: Float!
+}
+
+input AddRentInput {
+  id_empregado: ID!
+  id_cliente: ID!
+  id_media: ID!
 }
 
 input UpdateCustomerInput {
@@ -107,4 +127,10 @@ input UpdateMovieInput {
   rating: Int
   price: Float
   available: Boolean
+}
+
+input RefundRentInput {
+    id_empregado: ID!
+    id_cliente: ID!
+    id_media: ID!
 }
