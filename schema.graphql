@@ -29,7 +29,7 @@ type Movie {
   genre: String
   rating: Int
   price: Float
-  availgit able: Boolean
+  available: Boolean
   medias: [Media]
 }
 
