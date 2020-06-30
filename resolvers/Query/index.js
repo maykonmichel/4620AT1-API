@@ -7,7 +7,6 @@ import movies from './movies';
 import rent from './rent';
 import rents from './rents';
 
-
 export default {
   customer,
   customers,

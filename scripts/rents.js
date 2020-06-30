@@ -9,7 +9,7 @@ export default {
       FROM rent
       WHERE id = $1;
   `,
-   insert: `
+  insert: `
           INSERT INTO rent(id_empregado,id_cliente,id_media)
           VALUES ($1, $2,$3)
           RETURNING id;

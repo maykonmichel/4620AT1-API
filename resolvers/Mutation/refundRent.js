@@ -9,7 +9,10 @@ export default async (parent, {input: {id, ...input}}, {db}) => {
 
   const rent = {...data, ...input};
 
-  await db.query(rents.refund, props(['id_empregado', 'id_cliente', 'id_media'], rent));
+  await db.query(
+    rents.refund,
+    props(['id_empregado', 'id_cliente', 'id_media'], rent),
+  );
 
   return rent;
 };
