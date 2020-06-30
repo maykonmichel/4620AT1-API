@@ -3,6 +3,9 @@ schema {
   mutation: Mutation
 }
 
+scalar Date
+
+
 type Customer {
   id: ID
   rg: String
@@ -38,6 +41,8 @@ type Rent {
   id_empregado: ID
   id_cliente: ID
   id_media: ID
+  data_aluguel: Date
+  data_devolucao: Date
 }
 
 type Mutation {
@@ -128,7 +133,8 @@ input UpdateMovieInput {
 }
 
 input RefundRentInput {
-  id_empregado: ID!
-  id_cliente: ID!
-  id_media: ID!
+  id : ID!
+  id_empregado: ID
+  id_cliente: ID
+  id_media: ID
 }

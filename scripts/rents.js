@@ -1,21 +1,21 @@
 export default {
   select: `
       SELECT *
-      FROM rent
+      FROM rents
       ORDER BY id;
   `,
   selectById: `
       SELECT *
-      FROM rent
+      FROM rents
       WHERE id = $1;
   `,
   insert: `
-          INSERT INTO rent(id_empregado,id_cliente,id_media)
+          INSERT INTO rents(id_empregado,id_cliente,id_media)
           VALUES ($1, $2,$3)
           RETURNING id;
   `,
   refund: `
-          UPDATE rent
+          UPDATE rents
           SET id_empregado = $2,
               id_cliente   = $3,
               id_media = $4,

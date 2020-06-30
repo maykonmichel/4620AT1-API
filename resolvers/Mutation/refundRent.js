@@ -11,7 +11,7 @@ export default async (parent, {input: {id, ...input}}, {db}) => {
 
   await db.query(
     rents.refund,
-    props(['id_empregado', 'id_cliente', 'id_media'], rent),
+    props(['id','id_empregado', 'id_cliente', 'id_media'], rent),
   );
 
   return rent;

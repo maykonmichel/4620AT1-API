@@ -1,5 +1,4 @@
 import addCustomer from './addCustomer';
-import addCustomer from './addCustomer';
 import addEmployee from './addEmployee';
 import addMedia from './addMedia';
 import addMovie from './addMovie';
