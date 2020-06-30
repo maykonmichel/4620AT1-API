@@ -2,9 +2,8 @@ DROP TABLE IF EXISTS rent;
 DROP TABLE IF EXISTS medias;
 DROP TABLE IF EXISTS movies;
 DROP TABLE IF EXISTS customer;
-DROP TABLE IF EXISTS employee;
+DROP TABLE IF EXISTS employees;
 DROP TABLE IF EXISTS people;
-
 
 CREATE TABLE people
 (
@@ -18,9 +17,8 @@ CREATE TABLE employees
     id SERIAL CONSTRAINT employees_pk PRIMARY KEY
             CONSTRAINT employees_people_number_fk
                     REFERENCES people ON DELETE CASCADE,
-    pis    INT
+    pis    CHARACTER VARYING
 );
-
 
 CREATE TABLE customer
 (
@@ -31,7 +29,6 @@ CREATE TABLE customer
             REFERENCES people ON DELETE CASCADE,
     cpf CHARACTER VARYING
 );
-
 
 CREATE TABLE movies
 (
@@ -63,6 +60,9 @@ CREATE TABLE rent
     data_aluguel  timestamp DEFAULT now(),
     data_devolucao timestamp DEFAULT null
 );
+
+DROP FUNCTION IF EXISTS aluguel() CASCADE;
+DROP FUNCTION IF EXISTS refundaluguel() CASCADE;
 
 CREATE or replace FUNCTION aluguel()
 RETURNS trigger AS $$
