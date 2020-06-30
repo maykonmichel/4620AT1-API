@@ -1,13 +1,13 @@
 export default {
   select: `
       SELECT e.id  id, pis
-      FROM employee e
+      FROM employees e
                INNER JOIN people p ON e.id = p.id
       ORDER BY e.id;
   `,
   selectById: `
       SELECT e.id id, pis
-      FROM employee e
+      FROM employees e
                INNER JOIN people p ON e.id = p.id
       WHERE e.id = $1;
   `,
@@ -18,7 +18,7 @@ export default {
           RETURNING id;
     `,
     `
-          INSERT INTO employee(pis)
+          INSERT INTO employees(pis)
           VALUES ($1)
           RETURNING id;
     `,
@@ -31,14 +31,14 @@ export default {
           WHERE id = $1;
     `,
     `
-          UPDATE employee
+          UPDATE employees
           SET pis = $2
           WHERE id = $1;
     `,
   ],
   delete: `
       DELETE
-      FROM employee
+      FROM employees
       WHERE id = $1
       RETURNING *;
   `,
