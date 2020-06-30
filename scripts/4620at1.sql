@@ -18,7 +18,7 @@ CREATE TABLE employees
     id SERIAL CONSTRAINT employees_pk PRIMARY KEY
             CONSTRAINT employees_people_number_fk
                     REFERENCES people ON DELETE CASCADE,
-    pis    INT
+    pis    CHARACTER VARYING
 );
 
 
@@ -96,6 +96,10 @@ CREATE TRIGGER devolucao_trigger
 AFTER UPDATE ON rents
 FOR EACH ROW
 EXECUTE PROCEDURE refundaluguel();
+
+
+
+
 
 
 
