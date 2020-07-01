@@ -134,7 +134,4 @@ input UpdateMovieInput {
 
 input RefundRentInput {
   id : ID!
-  id_empregado: ID
-  id_cliente: ID
-  id_media: ID
 }

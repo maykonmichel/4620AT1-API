@@ -97,3 +97,48 @@ AFTER UPDATE ON rents
 FOR EACH ROW
 EXECUTE PROCEDURE refundaluguel();
 
+INSERT INTO people
+VALUES (1,'João',10);
+
+INSERT INTO people
+VALUES (2,'Maria',20);
+
+INSERT INTO people
+VALUES (3,'José',30);
+
+INSERT INTO employees
+VALUES (1,11);
+
+INSERT INTO employees
+VALUES (2,22);
+
+INSERT INTO  customer
+VALUES (3,30);
+
+INSERT INTO movies
+VALUES (10,'Bacurau','Gênero Foda',5,55.10);
+
+INSERT INTO movies
+VALUES (11,'Branquelas','Gênero Media',6,55.10);
+
+INSERT INTO medias
+VALUES (91,10,'A',default);
+INSERT INTO medias
+VALUES (92,11,'A',default);
+INSERT INTO medias
+VALUES (93,11,'A',default);
+INSERT INTO medias
+VALUES (94,10,'A',default);
+INSERT INTO medias
+VALUES (95,11,'A',default);
+INSERT INTO medias
+VALUES (96,10,'A',default);
+INSERT INTO medias
+VALUES (97,10,'A',default);
+
+
+INSERT INTO rents
+VALUES (22,1,3,94,now());
+
+INSERT INTO rents
+VALUES (34,1,3,95,now());
