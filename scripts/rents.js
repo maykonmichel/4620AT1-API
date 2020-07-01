@@ -10,9 +10,9 @@ export default {
       WHERE id = $1;
   `,
   insert: `
-          INSERT INTO rents(id_empregado,id_cliente,id_media)
-          VALUES ($1, $2,$3)
-          RETURNING id;
+      INSERT INTO rents(id_empregado, id_cliente, id_media)
+      VALUES ($1, $2, $3)
+      RETURNING id;
   `,
   refund: `
           UPDATE rents

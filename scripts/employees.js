@@ -6,7 +6,7 @@ export default {
       ORDER BY e.id;
   `,
   selectById: `
-      SELECT e.id id, pis
+      SELECT e.id id, name, rg, pis
       FROM employees e
                INNER JOIN people p ON e.id = p.id
       WHERE e.id = $1;

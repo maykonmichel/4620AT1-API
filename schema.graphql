@@ -5,7 +5,6 @@ schema {
 
 scalar Date
 
-
 type Customer {
   id: ID
   rg: String
@@ -24,6 +23,7 @@ type Media {
   id: ID
   location: String
   available: Boolean
+  movie: Movie
 }
 
 type Movie {
@@ -41,6 +41,9 @@ type Rent {
   id_empregado: ID
   id_cliente: ID
   id_media: ID
+  employee: Employee
+  customer: Customer
+  media: Media
   data_aluguel: Date
   data_devolucao: Date
 }
