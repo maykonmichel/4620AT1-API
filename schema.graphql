@@ -23,6 +23,7 @@ type Media {
   id: ID
   location: String
   available: Boolean
+  movie: Movie
 }
 
 type Movie {
