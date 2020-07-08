@@ -18,8 +18,8 @@ export default {
           RETURNING id;
     `,
     `
-          INSERT INTO customer(cpf)
-          VALUES ($1)
+          INSERT INTO customer(id, cpf)
+          VALUES ($1, $2)
           RETURNING id;
     `,
   ],

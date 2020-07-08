@@ -14,7 +14,7 @@ CREATE TABLE people
 
 CREATE TABLE employees
 (
-    id SERIAL CONSTRAINT employees_pk PRIMARY KEY
+    id INT CONSTRAINT employees_pk PRIMARY KEY
             CONSTRAINT employees_people_number_fk
                     REFERENCES people ON DELETE CASCADE,
     pis    CHARACTER VARYING
@@ -22,7 +22,7 @@ CREATE TABLE employees
 
 CREATE TABLE customer
 (
-    id  SERIAL
+    id  INT
         CONSTRAINT customer_pk
             PRIMARY KEY
         CONSTRAINT customer_people_id_fk

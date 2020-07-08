@@ -18,8 +18,8 @@ export default {
           RETURNING id;
     `,
     `
-          INSERT INTO employees(pis)
-          VALUES ($1)
+          INSERT INTO employees(id, pis)
+          VALUES ($1, $2)
           RETURNING id;
     `,
   ],
