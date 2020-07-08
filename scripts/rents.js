@@ -15,12 +15,9 @@ export default {
       RETURNING id;
   `,
   refund: `
-      UPDATE rents
-      SET id_empregado   = $2,
-          id_cliente     = $3,
-          id_media       = $4,
-          data_devolucao = now()
-      WHERE id = $1;
+          UPDATE rents
+          SET data_devolucao = now()
+          WHERE id = $1;
   `,
   remove: `
       DELETE

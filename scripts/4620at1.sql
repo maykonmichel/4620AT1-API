@@ -96,4 +96,3 @@ CREATE TRIGGER devolucao_trigger
 AFTER UPDATE ON rents
 FOR EACH ROW
 EXECUTE PROCEDURE refundaluguel();
-
